@@ -1,0 +1,43 @@
+[
+  {
+    "id": 1,
+    "title": "Donza - Plataforma de Ensino Online",
+    "stack": "React + TypeScript + Node.js + PostgreSQL",
+    "description": "Desenvolvimento de uma plataforma de ensino com suporte a cursos, aulas em vídeo, quizzes interativos, comunidades de ensino e painéis administrativos. O sistema permite que instrutores criem conteúdos e os acompanhem em tempo real.",
+    "challenges": "Implementar uma arquitetura escalável para suportar diversos tipos de mídia, criar sistemas de interação em comunidades de ensino e garantir a sincronização em tempo real dos dados educacionais.",
+    "impact": "A plataforma, ainda em fase de testes, demonstra grande potencial de transformação na experiência de ensino online, com expectativa de alto impacto no mercado educacional.",
+    "duration": "3 meses",
+    "complexity": "Alta",
+    "link": "https://donza.com",
+    "images": [
+      "/images/projects/donza-1.png",
+      "/images/projects/donza-2.png",
+      "/images/projects/donza-3.png",
+      "/images/projects/donza-4.png",
+      "/images/projects/donza-5.png",
+      "/images/projects/donza-6.png",
+      "/images/projects/donza-7.png"
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Rentix - Gestão Imobiliária Inteligente",
+    "stack": "React + TypeScript + Node.js + MySQL",
+    "description": "Desenvolvimento de uma plataforma completa para gerenciamento imobiliário, incluindo gestão de inquilinos, propriedades, pagamentos e comunicação integrada via email e WhatsApp. Interface limpa e intuitiva para administração segura de portfólios imobiliários.",
+    "challenges": "Integrar múltiplos sistemas de comunicação, garantir segurança de dados sensíveis e criar fluxos de trabalho eficientes para gestão de propriedades e pagamentos.",
+    "impact": "Plataforma já em produção, ganhando rápida aceitação no mercado por sua abordagem elegante e dinâmica para resolver desafios complexos da gestão imobiliária.",
+    "duration": "3 meses",
+    "complexity": "Alta",
+    "link": "https://rentix.com",
+    "images": [
+      "/images/projects/rentix-1.png",
+      "/images/projects/rentix-2.png",
+      "/images/projects/rentix-3.png",
+      "/images/projects/rentix-4.png",
+      "/images/projects/rentix-5.png",
+      "/images/projects/rentix-6.png",
+      "/images/projects/rentix-7.png",
+      "/images/projects/rentix-8.png"
+    ]
+  }
+]
