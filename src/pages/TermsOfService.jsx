@@ -11,7 +11,7 @@ export default function TermsOfService() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden"
+          className="max-w-4xl mx-auto mt-12 bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden"
         >
           <div className="p-8 md:p-12">
             <div className="text-center mb-12">

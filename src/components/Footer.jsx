@@ -54,7 +54,7 @@ export default function Footer() {
   return (
     <footer className="border-t bg-background/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {/* Brand section */}
           <div className="space-y-4">
             <Link 
@@ -106,7 +106,7 @@ export default function Footer() {
           ))}
 
           {/* Newsletter */}
-          <div className="space-y-4">
+          {/* <div className="space-y-4">
             <h4 className="text-sm font-semibold tracking-wider">
               Receba atualizações
             </h4>
@@ -123,7 +123,7 @@ export default function Footer() {
                 <ArrowRight className="h-4 w-4" />
               </Button>
             </form>
-          </div>
+          </div> */}
         </div>
 
         {/* Bottom footer */}

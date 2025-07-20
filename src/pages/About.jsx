@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { 
   Code, 
   Share2,
@@ -10,7 +10,7 @@ import {
   Layout,
   Mail
 } from 'lucide-react';
-import { FaReact, FaNodeJs, FaDocker, FaPython } from 'react-icons/fa';
+import { FaReact, FaNodeJs } from 'react-icons/fa';
 import { SiNextdotjs, SiTypescript, SiPostgresql, SiTailwindcss, SiDjango, SiKubernetes } from 'react-icons/si';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
@@ -19,7 +19,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 const techIcons = {
-  'Next.js': <SiNextdotjs className="w-6 h-6 text-black" />,
+  'Next.js': <SiNextdotjs className="w-6 h-6 text-black dark:text-gray-100" />,
   'React': <FaReact className="w-6 h-6 text-blue-500" />,
   'Node.js': <FaNodeJs className="w-6 h-6 text-green-600" />,
   'TypeScript': <SiTypescript className="w-6 h-6 text-blue-400" />,
@@ -72,10 +72,10 @@ export default function About() {
   return (
     <>
       <Header />
-      <main className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+      <main className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
         {/* Hero Section with 3D Effect */}
         <div className="relative overflow-hidden">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
+          <div className="max-w-7xl mx-auto mt-10 px-4 sm:px-6 lg:px-8 py-24 md:py-32">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -91,7 +91,7 @@ export default function About() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.2 }}
-                    className="text-4xl md:text-6xl font-extrabold tracking-tight text-gray-900 mb-6"
+                    className="text-4xl md:text-6xl font-extrabold tracking-tight text-gray-900 dark:text-gray-300 mb-6"
                   >
                     Transformando <span className="text-blue-600">código</span> em <span className="text-blue-600">resultados</span>
                   </motion.h1>
@@ -99,7 +99,7 @@ export default function About() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.4 }}
-                    className="text-xl text-gray-600 mb-8 leading-relaxed"
+                    className="text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed"
                   >
                     Atuo desenvolvendo soluções tecnológicas que ajudam a resolver desafios reais enfrentados por diferentes organizações e pessoas em Moçambique, com foco em ferramentas modernas, 
                     eficazes e preparadas para crescer conforme as necessidades evoluem.
@@ -108,7 +108,7 @@ export default function About() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.6 }}
-                    className="flex flex-wrap gap-4"
+                    className="flex flex-wrap gap-4 mb-8"
                   >
                     <Button asChild>
                       <a href="/projects">
@@ -127,12 +127,12 @@ export default function About() {
                   initial={{ scale: 0.9, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{ delay: 0.3 }}
-                  className="relative"
+                  className="relative mb-8"
                 >
                   <div className="absolute -inset-8 bg-blue-500 rounded-3xl transform rotate-6 opacity-10"></div>
                   <div className="relative aspect-square overflow-hidden rounded-2xl shadow-2xl border-8 border-white">
                     <img
-                      src="/images/profissional-pic.png"
+                      src="/images/profissional-pic-2.png"
                       alt="Foto de perfil profissional"
                       className="w-full h-full object-cover"
                     />
@@ -168,7 +168,7 @@ export default function About() {
                     </div>
                     <div>
                       <CardTitle className="text-3xl font-bold">{stat.value}</CardTitle>
-                      <p className="text-gray-600">{stat.label}</p>
+                      <p className="text-gray-600 dark:text-gray-400">{stat.label}</p>
                     </div>
                   </CardHeader>
                 </Card>
@@ -189,10 +189,10 @@ export default function About() {
               <Badge variant="outline" className="mb-4 bg-blue-50 text-blue-600 border-blue-200">
                 Jornada
               </Badge>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-300 mb-4">
                 Minha Trajetória Profissional
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
                 Da primeira linha de código aos sistemas em grande escala
               </p>
             </div>
@@ -221,7 +221,7 @@ export default function About() {
                             <Badge variant="secondary">{item.year}</Badge>
                             <CardTitle className="text-xl">{item.title}</CardTitle>
                           </div>
-                          <p className="text-gray-600 mt-2">{item.description}</p>
+                          <p className="text-gray-600 dark:text-gray-400 mt-2">{item.description}</p>
                         </div>
                       </CardHeader>
                     </Card>
@@ -244,10 +244,10 @@ export default function About() {
               <Badge variant="outline" className="mb-4 bg-blue-50 text-blue-600 border-blue-200">
                 Habilidades
               </Badge>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-300 mb-4">
                 Tecnologias que Domino
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
                 Ferramentas modernas para construir soluções de alto impacto
               </p>
             </div>

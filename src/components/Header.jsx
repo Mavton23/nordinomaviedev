@@ -3,16 +3,11 @@ import { Link, useLocation } from 'react-router-dom';
 import { 
   Menu, 
   X, 
-  ArrowRight,
-  Mail,
-  Github, 
-  Linkedin, 
-  Instagram,
-  Twitter
+  Mail
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
-// import { ModeToggle } from '@/components/mode-toggle';
+import ModeToggle from '../components/ModeToggle';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -79,13 +74,13 @@ export default function Header() {
                   Contato
                 </Link>
               </Button>
-              {/* <ModeToggle /> */}
+              <ModeToggle />
             </div>
           </div>
 
           {/* Mobile menu button */}
           <div className="flex md:hidden items-center gap-4">
-            {/* <ModeToggle /> */}
+            <ModeToggle />
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="inline-flex items-center justify-center p-2 rounded-md text-muted-foreground hover:text-primary focus:outline-none"

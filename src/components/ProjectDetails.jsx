@@ -1,20 +1,13 @@
 import { useParams } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { 
   ArrowLeft, 
   ExternalLink, 
-  Code, 
-  Cpu, 
-  Database, 
-  GitBranch, 
-  Globe, 
-  Layers, 
-  Server, 
-  Terminal,
+  Code,
   AlertCircle,
   Rocket
 } from 'lucide-react';
-import { FaReact, FaNodeJs, FaDocker, FaPython } from 'react-icons/fa';
+import { FaReact, FaNodeJs } from 'react-icons/fa';
 import { SiNextdotjs, SiTypescript, SiPostgresql, SiMysql, SiTailwindcss, SiDjango, SiKubernetes } from 'react-icons/si';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -26,7 +19,7 @@ import Footer from './Footer';
 import projects from '../mock/projects.json';
 
 const techIcons = {
-  'Next.js': <SiNextdotjs className="w-10 h-10 text-black" />,
+  'Next.js': <SiNextdotjs className="w-10 h-10 text-black dark:text-gray-100" />,
   'React': <FaReact className="w-10 h-10 text-blue-500" />,
   'Node.js': <FaNodeJs className="w-10 h-10 text-green-600" />,
   'TypeScript': <SiTypescript className="w-10 h-10 text-blue-400" />,
@@ -43,7 +36,7 @@ export default function ProjectDetails() {
 
   if (!project) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
         <Card className="max-w-md text-center border-0 shadow-lg">
           <CardHeader>
             <AlertCircle className="w-12 h-12 mx-auto text-red-500" />
@@ -70,7 +63,7 @@ export default function ProjectDetails() {
   return (
     <>
       <Header />
-      <main className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+      <main className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
         {/* Hero Section */}
         <div className="relative h-96 w-full overflow-hidden">
           <motion.div
@@ -124,16 +117,16 @@ export default function ProjectDetails() {
 
                   <TabsContent value="about" className="pt-6">
                     <div className="prose max-w-none">
-                      <h3 className="text-2xl font-semibold text-gray-900 mb-4">Visão Geral</h3>
-                      <p className="text-gray-700 leading-relaxed whitespace-pre-line">
+                      <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-200 mb-4">Visão Geral</h3>
+                      <p className="text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-line">
                         {project.description}
                       </p>
                     </div>
 
                     {project.challenges && (
                       <div className="mt-10">
-                        <h3 className="text-2xl font-semibold text-gray-900 mb-4">Desafios Técnicos</h3>
-                        <p className="text-gray-700 leading-relaxed">
+                        <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-200 mb-4">Desafios Técnicos</h3>
+                        <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
                           {project.challenges}
                         </p>
                       </div>
@@ -176,7 +169,7 @@ export default function ProjectDetails() {
                         <div className="grid grid-cols-2 gap-4">
                           <Card>
                             <CardHeader className="pb-2">
-                              <CardTitle className="text-sm font-medium text-gray-500">Duração</CardTitle>
+                              <CardTitle className="text-sm font-medium text-gray-500 dark:text-gray-400">Duração</CardTitle>
                             </CardHeader>
                             <CardContent>
                               <div className="text-2xl font-bold">
@@ -186,7 +179,7 @@ export default function ProjectDetails() {
                           </Card>
                           <Card>
                             <CardHeader className="pb-2">
-                              <CardTitle className="text-sm font-medium text-gray-500">Complexidade</CardTitle>
+                              <CardTitle className="text-sm font-medium text-gray-500 dark:text-gray-400">Complexidade</CardTitle>
                             </CardHeader>
                             <CardContent>
                               <div className="text-2xl font-bold">
