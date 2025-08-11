@@ -6,7 +6,7 @@
     "description": "Desenvolvimento de uma plataforma de ensino com suporte a cursos, aulas em vídeo, quizzes interativos, comunidades de ensino e painéis administrativos. O sistema permite que instrutores criem conteúdos e os acompanhem em tempo real.",
     "challenges": "Implementar uma arquitetura escalável para suportar diversos tipos de mídia, criar sistemas de interação em comunidades de ensino e garantir a sincronização em tempo real dos dados educacionais.",
     "impact": "A plataforma, ainda em fase de testes, demonstra grande potencial de transformação na experiência de ensino online, com expectativa de alto impacto no mercado educacional.",
-    "duration": "7 meses",
+    "duration": "4 meses",
     "complexity": "Alta",
     "link": "https://donza.vercel.app",
     "images": [
