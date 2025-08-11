@@ -6,9 +6,9 @@
     "description": "Desenvolvimento de uma plataforma de ensino com suporte a cursos, aulas em vídeo, quizzes interativos, comunidades de ensino e painéis administrativos. O sistema permite que instrutores criem conteúdos e os acompanhem em tempo real.",
     "challenges": "Implementar uma arquitetura escalável para suportar diversos tipos de mídia, criar sistemas de interação em comunidades de ensino e garantir a sincronização em tempo real dos dados educacionais.",
     "impact": "A plataforma, ainda em fase de testes, demonstra grande potencial de transformação na experiência de ensino online, com expectativa de alto impacto no mercado educacional.",
-    "duration": "3 meses",
+    "duration": "7 meses",
     "complexity": "Alta",
-    "link": "https://donza.com",
+    "link": "https://donza.vercel.app",
     "images": [
       "/images/projects/donza-1.png",
       "/images/projects/donza-2.png",
@@ -28,7 +28,7 @@
     "impact": "Plataforma já em produção, ganhando rápida aceitação no mercado por sua abordagem elegante e dinâmica para resolver desafios complexos da gestão imobiliária.",
     "duration": "3 meses",
     "complexity": "Alta",
-    "link": "https://rentix.com",
+    "link": "https://rentix.vercel.app",
     "images": [
       "/images/projects/rentix-1.png",
       "/images/projects/rentix-2.png",
