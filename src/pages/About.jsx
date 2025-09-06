@@ -17,7 +17,6 @@ import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import profissionalPic from '@/images/profissional-pic.png';
 
 const techIcons = {
   'Next.js': <SiNextdotjs className="w-6 h-6 text-black dark:text-gray-100" />,
@@ -133,7 +132,7 @@ export default function About() {
                   <div className="absolute -inset-8 bg-blue-500 rounded-3xl transform rotate-6 opacity-10"></div>
                   <div className="relative aspect-square overflow-hidden rounded-2xl shadow-2xl border-8 border-white">
                     <img
-                      src={profissionalPic}
+                      src="/images/profissional-pic.png"
                       alt="Foto de perfil profissional"
                       className="w-full h-full object-cover"
                       loading="lazy"
