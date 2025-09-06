@@ -17,7 +17,7 @@ import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import profissionalPic from '@/images/profissional-pic-2.png';
+import profissionalPic from '/images/profissional-pic-2.png';
 
 const techIcons = {
   'Next.js': <SiNextdotjs className="w-6 h-6 text-black dark:text-gray-100" />,
