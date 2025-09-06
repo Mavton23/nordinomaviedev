@@ -17,7 +17,7 @@ import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import profissionalPic from '/images/profissional-pic-2.png';
+import profissionalPic from '@/images/profissional-pic.png';
 
 const techIcons = {
   'Next.js': <SiNextdotjs className="w-6 h-6 text-black dark:text-gray-100" />,
@@ -132,15 +132,24 @@ export default function About() {
                 >
                   <div className="absolute -inset-8 bg-blue-500 rounded-3xl transform rotate-6 opacity-10"></div>
                   <div className="relative aspect-square overflow-hidden rounded-2xl shadow-2xl border-8 border-white">
-                    <picture>
-                      <source srcSet="/images/profissional-pic-2.png" type="image/png" />
-                      <img
-                        src={profissionalPic}
-                        alt="Foto de perfil profissional"
-                        className="w-full h-full object-cover"
-                        loading="lazy"
-                      />
-                    </picture>
+                    <img
+                      src={profissionalPic}
+                      alt="Foto de perfil profissional"
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                      onError={(e) => {
+                        e.target.style.display = 'none';
+                        e.target.nextSibling.style.display = 'flex';
+                      }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center hidden">
+                      <div className="text-center p-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-blue-500 mx-auto mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                        <p className="text-blue-800 font-medium">Foto de perfil profissional</p>
+                      </div>
+                    </div>
                   </div>
                 </motion.div>
               </div>
