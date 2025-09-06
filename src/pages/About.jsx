@@ -132,10 +132,9 @@ export default function About() {
                   <div className="absolute -inset-8 bg-blue-500 rounded-3xl transform rotate-6 opacity-10"></div>
                   <div className="relative aspect-square overflow-hidden rounded-2xl shadow-2xl border-8 border-white">
                     <picture>
-                      <source srcSet="/images/profissional-pic-2.webp" type="image/webp" />
-                      <source srcSet="/images/profissional-pic-2.jpg" type="image/jpeg" />
+                      <source srcSet="/images/profissional-pic-2.png" type="image/png" />
                       <img
-                        src="/images/profissional-pic-2.jpg"
+                        src="/images/profissional-pic-2.png"
                         alt="Foto de perfil profissional"
                         className="w-full h-full object-cover"
                         loading="lazy"
