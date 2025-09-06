@@ -292,7 +292,7 @@ export default function About() {
           </motion.div>
         </div>
 
-        {/* Call to Action */}
+        {/* CTA */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
           <motion.div
             initial={{ opacity: 0 }}
