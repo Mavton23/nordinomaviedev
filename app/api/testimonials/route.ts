@@ -59,16 +59,15 @@ export async function POST(request: NextRequest) {
         content,
         company: company || null,
         position: position || null,
-        approved: false, // Sempre inicia como pendente
+        approved: false,
         featured: false
       }
     });
 
     return NextResponse.json(testimonial);
   } catch (error) {
-    console.error('Erro ao criar testemunho:', error);
     return NextResponse.json(
-      { error: 'Erro ao criar testemunho' },
+      { error: error },
       { status: 500 }
     );
   }
