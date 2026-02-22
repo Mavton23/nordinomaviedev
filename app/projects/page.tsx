@@ -17,7 +17,7 @@ import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface Project {
-  id: number;
+  slug: string;
   title: string;
   stack: string;
   description: string;
@@ -27,19 +27,20 @@ interface Project {
   complexity: string;
   link: string;
   images: string[];
+  features?: string[];
 }
 
 const mockProjects: Project[] = [
   {
-    "id": 1,
+    "slug": "donza",
     "title": "Donza - Plataforma de Ensino Online",
-    "stack": "React + TypeScript + Node.js + PostgreSQL",
+    "stack": "React, TypeScript, Node.js, PostgreSQL",
     "description": "Desenvolvimento de uma plataforma de ensino com suporte a cursos, aulas em vídeo, quizzes interativos, comunidades de ensino e painéis administrativos. O sistema permite que instrutores criem conteúdos e os acompanhem em tempo real.",
     "challenges": "Implementar uma arquitetura escalável para suportar diversos tipos de mídia, criar sistemas de interação em comunidades de ensino e garantir a sincronização em tempo real dos dados educacionais.",
     "impact": "A plataforma, ainda em fase de testes, demonstra grande potencial de transformação na experiência de ensino online, com expectativa de alto impacto no mercado educacional.",
-    "duration": "3 meses",
+    "duration": "4 meses",
     "complexity": "Alta",
-    "link": "https://donza.com",
+    "link": "https://donza.vercel.app",
     "images": [
       "/images/projects/donza-1.png",
       "/images/projects/donza-2.png",
@@ -51,15 +52,15 @@ const mockProjects: Project[] = [
     ]
   },
   {
-    "id": 2,
+    "slug": "rentix",
     "title": "Rentix - Gestão Imobiliária Inteligente",
-    "stack": "React + TypeScript + Node.js + MySQL",
+    "stack": "React, TypeScript, Node.js, PostgreSQL",
     "description": "Desenvolvimento de uma plataforma completa para gerenciamento imobiliário, incluindo gestão de inquilinos, propriedades, pagamentos e comunicação integrada via email e WhatsApp. Interface limpa e intuitiva para administração segura de portfólios imobiliários.",
     "challenges": "Integrar múltiplos sistemas de comunicação, garantir segurança de dados sensíveis e criar fluxos de trabalho eficientes para gestão de propriedades e pagamentos.",
     "impact": "Plataforma já em produção, ganhando rápida aceitação no mercado por sua abordagem elegante e dinâmica para resolver desafios complexos da gestão imobiliária.",
     "duration": "3 meses",
     "complexity": "Alta",
-    "link": "https://rentix.com",
+    "link": "https://rentix.vercel.app",
     "images": [
       "/images/projects/rentix-1.png",
       "/images/projects/rentix-2.png",
@@ -72,18 +73,36 @@ const mockProjects: Project[] = [
     ]
   },
   {
-    "id": 3,
-    "title": "E-commerce Personalizado",
-    "stack": "Next.js + TypeScript + Tailwind CSS + Stripe",
-    "description": "Desenvolvimento de uma plataforma de e-commerce completa com sistema de pagamentos integrado, gestão de inventário e dashboard administrativo.",
-    "challenges": "Implementar sistema de pagamentos seguro e integração com múltiplos gateways de pagamento.",
-    "impact": "Aumento de 40% nas vendas online do cliente.",
+    "slug": "vox-scriptura",
+    "title": "Vox Scriptura - Voz da Escritura",
+   "stack": "Next.js, TypeScript, Prisma, PostgreSQL, OpenAI",
+    "description": "Plataforma cristã dedicada ao ensino da sã doutrina, oferecendo conteúdo teológico de autores confiáveis como Mario Persona, John Nelson Darby e William Kelly. Inclui área de perguntas e respostas, ensinos doutrinários, versículos comentados diariamente e chat com IA baseado nos escritos dos autores.",
+    "challenges": "Implementação de sistema RAG (Retrieval-Augmented Generation) para chat com IA, utilizando embeddings e busca semântica para respostas baseadas exclusivamente nos escritos dos autores. Desenvolvimento de painel administrativo completo para gestão de conteúdo, sistema de autenticação com diferentes níveis de permissão (admin/user) e funcionalidade de favoritos para usuários salvam conteúdo.",
+    "impact": "Plataforma com mais de 75 doutrinas publicadas, sistema de IA funcional para consultas teológicas e interface intuitiva que facilita o estudo bíblico. Arquitetura preparada para escalar com novos conteúdos e autores.",
     "duration": "2 meses",
-    "complexity": "Média",
-    "link": "https://exemplo-ecommerce.com",
+    "complexity": "Baixa",
+    "link": "https://vox-scriptura.vercel.app",
     "images": [
-      "/images/projects/ecommerce-1.png",
-      "/images/projects/ecommerce-2.png"
+      "/images/projects/vox-1.png",
+      "/images/projects/vox-2.png",
+      "/images/projects/vox-3.png",
+      "/images/projects/vox-4.png",
+      "/images/projects/vox-5.png",
+      "/images/projects/vox-6.png",
+      "/images/projects/vox-7.png",
+      "/images/projects/vox-8.png"
+    ],
+    "features": [
+      "Sistema de autenticação com NextAuth (credenciais + Google + GitHub)",
+      "Painel administrativo completo para gestão de conteúdo",
+      "Área de perguntas e respostas com filtros por autor e tags",
+      "Doutrinas com suporte a Markdown e preview em tempo real",
+      "Frases diárias com agendamento e versículo do dia automático",
+      "Chat com IA utilizando RAG e embeddings da OpenAI",
+      "Sistema de favoritos para usuários salvam conteúdo",
+      "Busca global integrada com debounce",
+      "Tema dark/light com next-themes",
+      "Páginas de autores com estatísticas de contribuições"
     ]
   }
 ];
@@ -96,7 +115,7 @@ const complexityColors = {
 
 export default function Projects() {
   const allTechs = ['Todos', ...new Set(mockProjects.flatMap(project => 
-    project.stack.split(' + ')
+    project.stack.split(', ').map(tech => tech.trim())
   ))];
 
   const [filter, setFilter] = useState('Todos');
@@ -107,7 +126,7 @@ export default function Projects() {
 
   return (
     <main className="min-h-screen bg-linear-to-br from-gray-50 via-white to-blue-50/30 dark:from-gray-900 dark:via-gray-800 dark:to-blue-900/20 py-8 sm:py-12 px-4 sm:px-6 lg:px-8 pt-20">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 md:pt-32 pb-16 sm:pb-20 md:pb-24">
         {/* Hero Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -115,7 +134,7 @@ export default function Projects() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12 sm:mb-16"
         >
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2 }}
@@ -125,7 +144,7 @@ export default function Projects() {
               <Rocket className="w-4 h-4 mr-2" />
               Portfólio
             </Badge>
-          </motion.div>
+          </motion.div> */}
           
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-gray-900 dark:text-white mb-4">
             Meus <span className="bg-linear-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Projetos</span>
@@ -185,7 +204,7 @@ export default function Projects() {
             >
               {filteredProjects.map((project, index) => (
                 <motion.div
-                  key={project.id}
+                  key={project.slug}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
@@ -244,7 +263,7 @@ export default function Projects() {
                     <CardFooter className="pt-0">
                       <div className="flex gap-3 w-full">
                         <Button asChild variant="outline" className="flex-1 gap-2 rounded-xl border-2 group-hover:border-blue-300 dark:group-hover:border-blue-600 transition-colors">
-                          <Link href={`/projects/${project.id}`}>
+                          <Link href={`/projects/${project.slug}`}>
                             Detalhes
                             <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                           </Link>

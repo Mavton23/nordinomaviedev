@@ -12,10 +12,13 @@ import {
   BarChart3,
   Lightbulb,
   Shield,
-  Zap
+  Zap,
+  Sparkles,
+  Package,
+  CheckCircle2
 } from 'lucide-react';
 import { FaReact, FaNodeJs } from 'react-icons/fa';
-import { SiNextdotjs, SiTypescript, SiPostgresql, SiMysql, SiTailwindcss, SiDjango, SiReact, SiNestjs } from 'react-icons/si';
+import { SiNextdotjs, SiTypescript, SiPostgresql, SiMysql, SiTailwindcss, SiDjango, SiReact, SiNestjs, SiPrisma, SiAuth0, SiOpenai } from 'react-icons/si';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/components/ui/card';
@@ -24,8 +27,15 @@ import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import Link from 'next/link';
 import Image from 'next/image';
 
+interface Feature {
+  title: string;
+  description: string;
+  category?: string;
+  icon?: string;
+}
+
 interface Project {
-  id: number;
+  slug: string;
   title: string;
   stack: string;
   description: string;
@@ -35,19 +45,20 @@ interface Project {
   complexity: string;
   link: string;
   images: string[];
+  features?: (string | Feature)[];
 }
 
 const mockProjects: Project[] = [
   {
-    "id": 1,
+    "slug": "donza",
     "title": "Donza - Plataforma de Ensino Online",
-    "stack": "Next.js, React, TypeScript, Node.js, PostgreSQL, Tailwind CSS",
+    "stack": "React, TypeScript, Node.js, PostgreSQL",
     "description": "Desenvolvimento de uma plataforma de ensino com suporte a cursos, aulas em vídeo, quizzes interativos, comunidades de ensino e painéis administrativos. O sistema permite que instrutores criem conteúdos e os acompanhem em tempo real.",
     "challenges": "Implementar uma arquitetura escalável para suportar diversos tipos de mídia, criar sistemas de interação em comunidades de ensino e garantir a sincronização em tempo real dos dados educacionais.",
     "impact": "A plataforma, ainda em fase de testes, demonstra grande potencial de transformação na experiência de ensino online, com expectativa de alto impacto no mercado educacional.",
-    "duration": "3 meses",
+    "duration": "4 meses",
     "complexity": "Alta",
-    "link": "https://donza.com",
+    "link": "https://donza.vercel.app",
     "images": [
       "/images/projects/donza-1.png",
       "/images/projects/donza-2.png",
@@ -59,15 +70,15 @@ const mockProjects: Project[] = [
     ]
   },
   {
-    "id": 2,
+    "slug": "rentix",
     "title": "Rentix - Gestão Imobiliária Inteligente",
-    "stack": "React, TypeScript, Node.js, MySQL, Tailwind CSS",
+    "stack": "React, TypeScript, Node.js, PostgreSQL",
     "description": "Desenvolvimento de uma plataforma completa para gerenciamento imobiliário, incluindo gestão de inquilinos, propriedades, pagamentos e comunicação integrada via email e WhatsApp. Interface limpa e intuitiva para administração segura de portfólios imobiliários.",
     "challenges": "Integrar múltiplos sistemas de comunicação, garantir segurança de dados sensíveis e criar fluxos de trabalho eficientes para gestão de propriedades e pagamentos.",
     "impact": "Plataforma já em produção, ganhando rápida aceitação no mercado por sua abordagem elegante e dinâmica para resolver desafios complexos da gestão imobiliária.",
     "duration": "3 meses",
     "complexity": "Alta",
-    "link": "https://rentix.com",
+    "link": "https://rentix.vercel.app",
     "images": [
       "/images/projects/rentix-1.png",
       "/images/projects/rentix-2.png",
@@ -77,6 +88,39 @@ const mockProjects: Project[] = [
       "/images/projects/rentix-6.png",
       "/images/projects/rentix-7.png",
       "/images/projects/rentix-8.png"
+    ]
+  },
+  {
+    "slug": "vox-scriptura",
+    "title": "Vox Scriptura - Voz da Escritura",
+   "stack": "Next.js, TypeScript, Prisma, PostgreSQL, TailwindCSS, OpenAI",
+    "description": "Plataforma cristã dedicada ao ensino da sã doutrina, oferecendo conteúdo teológico de autores confiáveis como Mario Persona, John Nelson Darby e William Kelly. Inclui área de perguntas e respostas, ensinos doutrinários, versículos comentados diariamente e chat com IA baseado nos escritos dos autores.",
+    "challenges": "Implementação de sistema RAG (Retrieval-Augmented Generation) para chat com IA, utilizando embeddings e busca semântica para respostas baseadas exclusivamente nos escritos dos autores. Desenvolvimento de painel administrativo completo para gestão de conteúdo, sistema de autenticação com diferentes níveis de permissão (admin/user) e funcionalidade de favoritos para usuários salvam conteúdo.",
+    "impact": "Plataforma com mais de 75 doutrinas publicadas, sistema de IA funcional para consultas teológicas e interface intuitiva que facilita o estudo bíblico. Arquitetura preparada para escalar com novos conteúdos e autores.",
+    "duration": "2 meses",
+    "complexity": "Baixa",
+    "link": "https://vox-scriptura.vercel.app",
+    "images": [
+      "/images/projects/vox-1.png",
+      "/images/projects/vox-2.png",
+      "/images/projects/vox-3.png",
+      "/images/projects/vox-4.png",
+      "/images/projects/vox-5.png",
+      "/images/projects/vox-6.png",
+      "/images/projects/vox-7.png",
+      "/images/projects/vox-8.png"
+    ],
+    "features": [
+      "Sistema de autenticação com NextAuth (credenciais + Google + GitHub)",
+      "Painel administrativo completo para gestão de conteúdo",
+      "Área de perguntas e respostas com filtros por autor e tags",
+      "Doutrinas com suporte a Markdown e preview em tempo real",
+      "Frases diárias com agendamento e versículo do dia automático",
+      "Chat com IA utilizando RAG e embeddings da OpenAI",
+      "Sistema de favoritos para usuários salvam conteúdo",
+      "Busca global integrada com debounce",
+      "Tema dark/light com next-themes",
+      "Páginas de autores com estatísticas de contribuições"
     ]
   }
 ];
@@ -88,10 +132,12 @@ const techIcons: Record<string, React.ReactNode> = {
   'Node.js': <FaNodeJs className="w-10 h-10 text-green-600" />,
   'NestJS': <SiNestjs className="w-10 h-10 text-red-500" />,
   'TypeScript': <SiTypescript className="w-10 h-10 text-blue-400" />,
+  'Prisma': <SiPrisma className="w-10 h-10 text-teal-500" />,
   'PostgreSQL': <SiPostgresql className="w-10 h-10 text-purple-500" />,
   'MySQL': <SiMysql className='w-10 h-10 text-orange-600' />,
   'Django': <SiDjango className="w-10 h-10 text-green-700" />,
-  'Tailwind CSS': <SiTailwindcss className="w-10 h-10 text-cyan-500" />
+  'TailwindCSS': <SiTailwindcss className="w-10 h-10 text-cyan-500" />,
+  'OpenAI': <SiOpenai className="w-10 h-10 text-green-500" />,
 };
 
 const complexityColors = {
@@ -107,9 +153,9 @@ const extractTechnologies = (stack: string): string[] => {
 
 export default function ProjectDetails() {
   const params = useParams();
-  const id = params.id as string;
+  const slug = params.slug as string;
   
-  const project = mockProjects.find((p) => p.id === parseInt(id));
+  const project = mockProjects.find((p) => p.slug === slug);
 
   if (!project) {
     return (
@@ -285,6 +331,85 @@ export default function ProjectDetails() {
                         {project.impact || "Este projeto trouxe melhorias significativas para o negócio do cliente."}
                       </AlertDescription>
                     </Alert>
+
+                    {/* Funcionalidades do Projeto */}
+                    <div className="space-y-4">
+                      <div className="flex items-center gap-2">
+                        <div className="p-2 rounded-lg bg-linear-to-r from-blue-500 to-purple-500">
+                          <Sparkles className="h-5 w-5 text-white" />
+                        </div>
+                        <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+                          Funcionalidades Principais
+                        </h3>
+                      </div>
+
+                      {project.features && project.features.length > 0 ? (
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          {project.features.map((feature, index) => (
+                            <motion.div
+                              key={index}
+                              initial={{ opacity: 0, y: 20 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ delay: index * 0.1 }}
+                              whileHover={{ scale: 1.02, y: -5 }}
+                              className="group relative"
+                            >
+                              <Card className="h-full border-0 bg-linear-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                                {/* Gradiente decorativo no canto */}
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-linear-to-br from-blue-500/10 to-purple-500/10 rounded-bl-full" />
+                                
+                                <CardHeader className="pb-2">
+                                  <div className="flex items-start justify-between">
+                                    <div className="flex items-center gap-3">
+                                      <div className="p-2 rounded-lg bg-linear-to-br from-blue-500 to-purple-500 text-white shadow-md">
+                                        {index < 10 ? (
+                                          <span className="text-sm font-bold w-4 h-4 flex items-center justify-center">
+                                            {String(index + 1).padStart(2, '0')}
+                                          </span>
+                                        ) : (
+                                          <CheckCircle2 className="h-4 w-4" />
+                                        )}
+                                      </div>
+                                      <CardTitle className="text-base font-semibold text-gray-900 dark:text-white">
+                                        {typeof feature === 'string' ? feature : feature.title}
+                                      </CardTitle>
+                                    </div>
+                                  </div>
+                                </CardHeader>
+                                
+                                <CardContent>
+                                  <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                                    {typeof feature === 'string' 
+                                      ? feature 
+                                      : feature.description || 'Funcionalidade implementada para melhorar a experiência do usuário.'}
+                                  </p>
+                                </CardContent>
+
+                                {/* Badge de categoria (se tiver categorias) */}
+                                {typeof feature !== 'string' && feature.category && (
+                                  <CardFooter className="pt-0">
+                                    <Badge variant="outline" className="text-xs bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-800">
+                                      {feature.category}
+                                    </Badge>
+                                  </CardFooter>
+                                )}
+                              </Card>
+                            </motion.div>
+                          ))}
+                        </div>
+                      ) : (
+                        <Card className="border-2 border-dashed border-gray-300 dark:border-gray-700 bg-transparent">
+                          <CardContent className="py-12 text-center">
+                            <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
+                              <Package className="h-8 w-8 text-gray-400" />
+                            </div>
+                            <p className="text-gray-500 dark:text-gray-400 text-lg">
+                              Nenhuma funcionalidade listada para este projeto.
+                            </p>
+                          </CardContent>
+                        </Card>
+                      )}
+                    </div>
 
                     <div>
                       <h4 className="font-semibold mb-4 text-gray-900 dark:text-white text-lg">Dados do Projeto</h4>
